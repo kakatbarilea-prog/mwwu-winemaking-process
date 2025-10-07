@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Winemaking Process — Make Wine With Us</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --brand:#800080;--brand-2:#9a329a;--ink:#0f172a;--muted:#6b7280;
+  --line:#e9e9ee;--bg:#ffffff;--radius:16px;--shadow-sm:0 8px 18px rgba(0,0,0,.06);
+  --shadow-lg:0 24px 60px rgba(0,0,0,.12);--hdr-h:64px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;font-family:"Montserrat",system-ui,-apple-system,BlinkMacSystemFont,Arial,sans-serif;color:var(--ink);background:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.container{max-width:1280px;margin:0 auto;padding:0 16px}
+
+/* Smooth anchors and sticky offset */
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hdr-h) + 18px)}
+
+/* Full-width wrappers for announce/header/footer */
+#announce .container,#siteHeader .container,.site-footer .container{max-width:none;width:100%;margin:0;padding-left:16px;padding-right:16px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;justify-content:center;height:42px;padding:0 18px;border-radius:999px;border:2px solid transparent;font-weight:900;font-size:15px;cursor:pointer;transition:transform .04s ease,box-shadow .2s ease,background .2s ease,color .2s ease,border-color .2s ease;user-select:none;position:relative;overflow:hidden;white-space:nowrap}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#fff;box-shadow:0 12px 28px rgba(128,0,128,.35)}
+.btn.primary:hover{transform:translateY(-1px);box-shadow:0 18px 36px rgba(128,0,128,.45);filter:brightness(1.04)}
+.btn.ghost{background:#fff;border-color:var(--brand);color:var(--brand)}
+.btn.ghost:hover{background:#faf5ff}
+
+/* Announcement */
+.announce-global{background:var(--brand);color:#fff;font-size:14px;line-height:1.35}
+.announce-inner{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:10px 0}
+.announce-global a{color:#fff;text-decoration:underline}
+
+/* Header / nav (same as your site, plus phone fix) */
+header{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:100}
+.bar{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;padding:14px 24px}
+.brand img{height:56px;width:auto}
+nav{display:flex;align-items:center;justify-content:center}
+.nav{display:flex;list-style:none;margin:0;padding:0;font-size:16px;width:100%;justify-content:space-evenly;white-space:nowrap}
+.nav a{color:#374151;font-weight:700}
+.nav a:hover{color:var(--brand)}
+.has-sub{position:relative}
+.subnav{position:absolute;top:100%;left:0;margin-top:8px;background:#fff;border-radius:12px;box-shadow:0 14px 36px rgba(0,0,0,.12);padding:8px;display:none;min-width:240px}
+.has-sub.open>.subnav{display:block}
+.subnav a{display:block;padding:8px 10px;border-radius:8px}
+.subnav a:hover{background:#faf7fb;color:var(--brand)}
+.actions{display:flex;align-items:center;gap:12px}
+.phone{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;color:#111827;white-space:nowrap}
+.phone svg{width:16px;height:16px;flex:0 0 auto}
+.social{display:flex;gap:8px}
+.social a{width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center}
+.social a:hover{color:var(--brand)}
+.hamburger{display:none}
+#nav-toggle{display:none}
+@media (max-width:980px){
+  .bar{grid-template-columns:auto auto 1fr}
+  .brand img{height:48px}
+  .hamburger{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:10px;padding:6px 10px;background:#fff}
+  nav{justify-content:flex-end}
+  .nav{position:fixed;inset:64px 16px auto 16px;flex-direction:column;gap:10px;background:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.08);padding:14px;display:none}
+  #nav-toggle:checked ~ nav .nav{display:flex}
+  .subnav{position:static;box-shadow:none;margin-top:0;padding:6px 0}
+}
+
+/* HERO – purple, white text */
+.hero{background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#fff}
+.hero-inner{min-height:42vh;display:flex;align-items:center}
+.hero-eyebrow{font-weight:900;letter-spacing:.2px;margin:0 0 8px;font-size:14px;opacity:.95}
+.hero-title{margin:0 0 10px;font-size:clamp(34px,5.6vw,58px);line-height:1.06;font-weight:900}
+.hero-desc{margin:0;font-size:clamp(15px,2.1vw,19px);max-width:80ch;opacity:.95}
+
+/* Sections */
+.section{padding:56px 0}
+.title{font-size:clamp(26px,3.2vw,38px);margin:0 0 10px;font-weight:900}
+.lead{font-size:18px;color:#374151;margin:0 0 16px;max-width:85ch}
+
+/* --- STORY TIMELINE (clean, wide, left rail) --- */
+.process{position:relative}
+.process .wrap{max-width:1280px;margin:0 auto}
+.track{position:relative}
+.track::before{
+  content:"";
+  position:absolute;
+  left:24px; /* far left inside container */
+  top:0; bottom:0;
+  width:4px; background:#eadcf4; border-radius:2px;
+}
+
+/* Hide the line after the last node so it ends at step 6 */
+.step:last-child::after{
+  content:""; position:absolute;
+  left:22px; /* align over the rail */
+  right:auto; bottom:-40px; top:calc(50% + 32px);
+  width:8px; background:#fff; /* same as page bg */
+}
+
+/* Each step: narrow rail column + content + image */
+.step{
+  position:relative;
+  display:grid;
+  grid-template-columns:72px 1.2fr 1fr; /* rail / copy / image */
+  gap:24px;
+  padding:22px 0;
+  align-items:start;
+}
+@media (max-width:960px){
+  .step{grid-template-columns:72px 1fr}
+  .step .image{grid-column:2 / -1}
+}
+.node{
+  position:relative;
+  width:64px;height:64px;border-radius:50%;
+  background:linear-gradient(180deg,var(--brand),var(--brand-2));
+  color:#fff;display:grid;place-items:center;
+  font-weight:900;font-size:22px;line-height:1;
+  box-shadow:0 12px 28px rgba(128,0,128,.25);
+  margin-left:-8px; /* center over left rail */
+  border:2px solid #fff; /* crisp against rail */
+}
+.content h3{margin:0 0 8px;font-size:24px}
+.content p{margin:0 0 10px;color:#374151;line-height:1.65}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+
+/* Placeholder 16:9 image block */
+.image .img16x9{
+  width:100%; aspect-ratio:16/9; border-radius:16px;
+  background:#f4f4f8 url('https://placehold.co/800x450?text=16x9+Image') center/cover no-repeat;
+  box-shadow:0 18px 44px rgba(0,0,0,.12);
+}
+
+/* Become a Winemaker block */
+.closer{max-width:980px;margin:0 auto}
+.closer .lead{max-width:none}
+
+/* Visiting section (2-col map + details) */
+.visit{padding-top:24px}
+.visit-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:28px;align-items:start}
+@media(max-width:960px){.visit-grid{grid-template-columns:1fr}}
+.map{
+  border-radius:18px;overflow:hidden;box-shadow:0 18px 44px rgba(0,0,0,.12)
+}
+.map .img16x9{width:100%;aspect-ratio:16/9;background:#f4f4f8 url('https://placehold.co/1200x675?text=Map+Preview') center/cover no-repeat}
+.visit-card h3{margin:0 0 10px;font-size:24px}
+.visit-card p{margin:0 0 8px;color:#374151}
+.addr{display:flex;gap:10px;align-items:flex-start;color:#374151;margin-top:8px}
+.addr i{color:var(--brand);margin-top:3px}
+
+/* Footer */
+.site-footer{background:#111;color:#ddd;font-size:15px;line-height:1.6;padding-top:50px;margin-top:56px}
+.footer-grid{display:grid;gap:40px;grid-template-columns:1.2fr 1fr 1fr}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.footer-grid{grid-template-columns:1fr}}
+.foot-title{color:#fff;font-weight:800;margin:0 0 12px;font-size:16px;text-transform:uppercase;position:relative}
+.foot-title::after{content:"";display:block;width:40px;height:2px;background:var(--brand);margin-top:6px}
+.footer-text{margin-bottom:14px;max-width:500px;color:#ccc}
+.footer-cta{margin-top:6px;display:inline-block;font-size:14px;padding:8px 18px}
+.footer-social{margin-top:16px;display:flex;gap:12px}
+.footer-social a{width:34px;height:34px;border-radius:50%;background:#222;display:flex;align-items:center;justify-content:center;color:#ccc;font-size:15px}
+.footer-social a:hover{background:var(--brand);color:#fff}
+.foot-links{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 24px}
+.foot-links a{color:#ddd;font-weight:500}
+.foot-links a:hover{color:#fff}
+.contact-list{list-style:none;padding:0;margin:0 0 14px;display:flex;flex-direction:column;gap:10px}
+.contact-list i{margin-right:8px;color:#fff}
+.contact-list a{color:#ddd}
+.contact-list a:hover{color:#fff}
+.hours-label{display:block;font-size:13px;color:#aaa;margin-bottom:2px;text-transform:uppercase}
+.hours-value{color:#eee}
+.footer-bottom{border-top:1px solid #222;margin-top:40px;padding:18px 0;font-size:13px;color:#999}
+.footer-bottom-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.footer-bottom a{color:#999;margin-left:14px}
+.footer-bottom a:hover{color:#fff}
+
+@media (max-width:480px){
+  .actions{gap:8px}
+  .phone{padding:6px 10px;font-size:14px}
+  .phone svg{width:14px;height:14px}
+}
+</style>
+</head>
+<body>
+
+<!-- Announcement -->
+<div class="announce-global" id="announce">
+  <div class="container announce-inner">
+    <div>🏅 Our winemakers clinched <strong>Best Red</strong> at the 2025 Garden State Amateur Wine Challenge — congratulations!</div>
+    <div><a href="https://makewinewithus.com/login">Already have an account? Log in</a></div>
+  </div>
+</div>
+
+<!-- Header -->
+<header id="siteHeader">
+  <div class="container bar">
+    <a class="brand" href="https://makewinewithus.com" aria-label="Make Wine With Us — Home">
+      <img src="https://d34hmiuaex7c0.cloudfront.net/3719/uploads/cmaspages/gallery/1672135833219.png" alt="Make Wine With Us logo"/>
+    </a>
+
+    <label class="hamburger" for="nav-toggle">☰ Menu</label>
+    <input id="nav-toggle" type="checkbox"/>
+
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li class="has-sub open">
+          <a href="https://makewinewithus.com/winemaking-process">Winemaking Process</a>
+          <div class="subnav" role="menu">
+            <a href="https://makewinewithus.com/new-product-list" role="menuitem">Wines You Can Make</a>
+            <a href="https://makewinewithus.com/design-your-custom-bottle" role="menuitem">Label Making</a>
+          </div>
+        </li>
+
+        <li class="has-sub" id="nav-whosfor">
+          <a href="https://makewinewithus.com/whos-it-for">Who’s It For?</a>
+          <div class="subnav" role="menu" aria-label="Who’s It For submenu">
+            <a href="https://makewinewithus.com/whos-it-for#individuals" role="menuitem">Individual Wine Lovers</a>
+            <a href="https://makewinewithus.com/whos-it-for#enthusiasts" role="menuitem">Wine Enthusiasts</a>
+            <a href="https://makewinewithus.com/whos-it-for#families-friends" role="menuitem">Family & Friends</a>
+            <a href="https://makewinewithus.com/whos-it-for#corporate" role="menuitem">Corporate & Team Building</a>
+          </div>
+        </li>
+
+        <li><a href="https://makewinewithus.com/region">Regions</a></li>
+        <li><a href="https://makewinewithus.com/about">About</a></li>
+        <li><a href="https://makewinewithus.com/faq-s">FAQs</a></li>
+        <li class="has-sub">
+          <a href="https://makewinewithus.com/upcoming-events">Events</a>
+          <div class="subnav" role="menu">
+            <a href="https://makewinewithus.com/private-events" role="menuitem">Private Events</a>
+            <a href="https://makewinewithus.com/upcoming-events" role="menuitem">Upcoming Events</a>
+          </div>
+        </li>
+        <li><a href="https://makewinewithus.com/contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="actions">
+      <a class="phone" href="tel:+12018769463" aria-label="Call Make Wine With Us">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.09 5.18 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.72c.12.9.31 1.77.57 2.6a2 2 0 0 1-.45 2.11L9 10a16 16 0 0 0 5 5l.57-.57a2 2 0 0 1 2.11-.45c.83.26 1.7.45 2.6.57A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        (201) 876-9463
+      </a>
+
+      <div class="social">
+        <a href="https://www.facebook.com/MakeWineWithUs" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/makewinewithus/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+
+      <a class="btn primary" href="https://makewinewithus.com/create-account">Make Wine Now</a>
+    </div>
+  </div>
+</header>
+
+<!-- Top anchor -->
+<div id="top"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div>
+      <div class="hero-eyebrow">WINEMAKING PROCESS</div>
+      <h1 class="hero-title">Discover The Winemaking Experience</h1>
+      <p class="hero-desc">The very first sip of your new favorite wine is only 9–10 months away. Through a series of hands-on sessions over several months, Make Wine With Us introduces students—of all levels—to the finer points of the craft in a fun, welcoming environment. Join other enthusiastic first-time winemakers in small, intimate groups and learn the confidence to handcraft your own unique vintage.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section process">
+  <div class="wrap container">
+    <div class="track">
+      <!-- Step 1 -->
+      <article class="step" id="selecting-grapes">
+        <div class="node">1</div>
+        <div class="content">
+          <h3>Selecting the Grapes</h3>
+          <p>Begin your winemaking journey by sampling your favorite reds and whites—don’t forget to leave room to try new blends. Our knowledgeable staff will guide you as you choose your own unique varietal. Looking for a tried-and-true favorite or a once-in-a-lifetime wine? We’re here to help.</p>
+        </div>
+        <div class="image">
+          <div class="img16x9">
+  <img src="https://d34hmiuaex7c0.cloudfront.net/3719/uploads/cmaspages/gallery/galleryitem_1759837120155.jpg" alt="Selecting the Grapes" style="width:100%;height:100%;object-fit:cover;border-radius:16px;">
+</div>
+
+        </div>
+      </article>
+
+      <!-- Step 2 -->
+      <article class="step" id="crushing">
+        <div class="node">2</div>
+        <div class="content">
+          <h3>Crushing the Grapes</h3>
+          <p>Don’t worry—you won’t be stomping grapes! Grapes are crushed and destemmed simultaneously by a specialized crusher-destemmer. As your chosen grapes are crushed, they fall through cylinder perforations which allow stems to pass out the end.</p>
+          <p><strong>For white wines:</strong> after crushing, the juice is separated from the skins and seeds, ensuring the purity of the juice for white wine production.</p>
+        </div>
+        <div class="image">
+         <div class="img16x9">
+  <img src="https://d34hmiuaex7c0.cloudfront.net/3719/uploads/cmaspages/gallery/galleryitem_1759837136439.jpg" alt="Crushing the Grapes" style="width:100%;height:100%;object-fit:cover;border-radius:16px;">
+</div>
+
+        </div>
+      </article>
+
+      <!-- Step 3 -->
+      <article class="step" id="pressing">
+        <div class="node">3</div>
+        <div class="content">
+          <h3>Pressing the Grapes</h3>
+          <p>Next, the free-run juice is pumped into your barrel. The crushed grapes are put through our hydraulic press to gently force out additional juice through perforations and into your barrel. As fermentation progresses, the grape skins become less slippery, allowing even more free-run juice to be collected. We taste at each stage to monitor progress.</p>
+        </div>
+        <div class="image">
+        <div class="img16x9">
+  <img src="https://d34hmiuaex7c0.cloudfront.net/3719/uploads/cmaspages/gallery/galleryitem_1759837148875.jpg" alt="Pressing the Grapes" style="width:100%;height:100%;object-fit:cover;border-radius:16px;">
+</div>
+
+        </div>
+      </article>
+
+      <!-- Step 4 -->
+      <article class="step" id="racking">
+        <div class="node">4</div>
+        <div class="content">
+          <h3>Racking the Wine</h3>
+          <p>Racking is the process by which suspended material (yeast cells, particles of skins, etc.) is removed from your wine after fermentation. Using 50-gallon wooden barrels—with greater surface-to-volume ratios—helps wine shed this material faster, as the rough interiors aid clarification. This step is optional, but we highly encourage you to be present during the racking of your own barrels.</p>
+        </div>
+        <div class="image">
+          <div class="img16x9">
+  <img src="https://d34hmiuaex7c0.cloudfront.net/3719/uploads/cmaspages/gallery/galleryitem_1759837159687.jpg" alt="Racking the Wine" style="width:100%;height:100%;object-fit:cover;border-radius:16px;">
+</div>
+
+        </div>
+      </article>
+
+      <!-- Step 5 -->
+      <article class="step" id="bottling">
+        <div class="node">5</div>
+        <div class="content">
+          <h3>Bottling the Wine</h3>
+          <p>This is the part you’ve been waiting for all year! Your wine has finished aging and is ready to go home. You’ll fill your bottles and cork them. You’ll also add a heat-shrinking colorful capsule on top. Bring friends and family to help you bottle, label, and pack up your handcrafted wine. Congrats, vintner!</p>
+        </div>
+        <div class="image">
+       <div class="img16x9">
+  <img src="https://d34hmiuaex7c0.cloudfront.net/3719/uploads/cmaspages/gallery/galleryitem_1759837169855.jpg" alt="Bottling the Wine" style="width:100%;height:100%;object-fit:cover;border-radius:16px;">
+</div>
+
+        </div>
+      </article>
+
+      <!-- Step 6 -->
+      <article class="step" id="labeling">
+        <div class="node">6</div>
+        <div class="content">
+          <h3>Applying Your Personalized Label</h3>
+          <p>The final step—applying your own personalized label! Get creative and unlock your wine’s unique personality. Choose from a variety of icons and print your own text. Your label will be the final touch that defines your wine to the world. Salut!</p>
+          <div class="btn-row">
+            <a class="btn primary" href="https://mwwu.segwik2.com/portal/login">Create Your Custom Label</a>
+          </div>
+        </div>
+        <div class="image">
+         <div class="img16x9">
+  <img src="https://d34hmiuaex7c0.cloudfront.net/3719/uploads/cmaspages/gallery/galleryitem_1759837266917.jpg" alt="Applying Your Personalized Label" style="width:100%;height:100%;object-fit:cover;border-radius:16px;">
+</div>
+
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Become a Winemaker (with button) -->
+<section class="section">
+  <div class="container closer">
+    <h2 class="title">Become a Winemaker</h2>
+    <p class="lead">Make Wine With Us is the place to be for any vinophile! From sampling, crushing and pressing, to racking and bottling, the winemaking process is the perfect hobby for any oenophile! Our Winemaking Experience is the perfect opportunity to catch up with family members and old friends. Looking for an out-of-the-box team building for the office? Our classes offer the perfect bonding retreat away from the meeting room. New or old — Make Wine With Us is the perfect hobby for friends.</p>
+    <p class="lead">Pair your vintage with great food and even better friends. Raise a glass to your creation and enjoy. Who knows, maybe even catch a classic episode of <em>I Love Lucy</em> or two! Salut!</p>
+    <div class="btn-row" style="margin-top:8px">
+      <a class="btn primary" href="https://makewinewithus.com/create-account">Start Winemaking</a>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <h3 class="foot-title">About Make Wine With Us</h3>
+      <p class="footer-text">Enjoy a unique winmaking experience - craft your own wine from premium grapes with guidance from our expert staff. Aged to perfection over a 9-month period, your wine is then bottled by you and taken home to savor and share.</p>
+      <a href="https://makewinewithus.com/create-account" class="btn primary footer-cta">Become a Winemaker</a>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/makewinewithus/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/MakeWineWithUs" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h3 class="foot-title">Explore</h3>
+      <ul class="foot-links">
+        <li><a href="https://makewinewithus.com/about">About</a></li><li><a href="https://makewinewithus.com/winemaking-process">Winemaking Process</a></li>
+        <li><a href="https://makewinewithus.com/new-product-list">Wines You Can Make</a></li><li><a href="https://makewinewithus.com/region">Regions</a></li>
+        <li><a href="https://makewinewithus.com/blog">Blog</a></li><li><a href="https://makewinewithus.com/faq-s">FAQs</a></li>
+        <li><a href="https://makewinewithus.com/upcoming-events">Events</a></li><li><a href="https://makewinewithus.com/private-events">Private Events</a></li>
+        <li><a href="https://makewinewithus.com/contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3 class="foot-title">Have a Question?</h3>
+      <ul class="contact-list">
+        <li><i class="fas fa-map-marker-alt"></i>21 Curie Avenue, Wallington, NJ 07057</li>
+        <li><i class="fas fa-phone-alt"></i><a href="tel:+12018769463">(201) 876-9463</a></li>
+        <li><i class="fas fa-envelope"></i><a href="mailto:info@makewinewithus.com">info@makewinewithus.com</a></li>
+      </ul>
+      <div class="hours"><span class="hours-label">Hours</span> <span class="hours-value">Closed today</span></div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p>© 2025 Make Wine With Us. All rights reserved.</p>
+      <div class="foot-legal">
+        <a href="https://makewinewithus.com/privacy-policy">Privacy</a>
+        <a href="https://makewinewithus.com/terms-of-service">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Set CSS var for sticky offset
+  function setHeaderVar(){
+    const hdr=document.getElementById('siteHeader');
+    document.documentElement.style.setProperty('--hdr-h', (hdr?hdr.offsetHeight:0) + 'px');
+  }
+  setHeaderVar(); window.addEventListener('resize', setHeaderVar);
+
+  // Button ripple
+  document.addEventListener('click',e=>{
+    const t=e.target.closest('.btn'); if(!t) return;
+    const r=document.createElement('span'), rect=t.getBoundingClientRect();
+    Object.assign(r.style,{position:'absolute', left:(e.clientX-rect.left)+'px', top:(e.clientY-rect.top)+'px',
+      width:'6px', height:'6px', borderRadius:'50%', background:'rgba(255,255,255,.5)',
+      transform:'translate(-50%,-50%) scale(0)', pointerEvents:'none',
+      transition:'transform .6s ease, opacity .8s ease'});
+    t.appendChild(r);
+    requestAnimationFrame(()=>{ r.style.transform='translate(-50%,-50%) scale(18)'; r.style.opacity='0'; });
+    setTimeout(()=>r.remove(),800);
+  });
+
+  // Keep dropdowns open while moving mouse (hover intent)
+  document.querySelectorAll('.has-sub').forEach(menu=>{
+    let hoverTimer=null;
+    menu.addEventListener('mouseenter', ()=>{ clearTimeout(hoverTimer); menu.classList.add('open'); });
+    menu.addEventListener('mouseleave', ()=>{ hoverTimer=setTimeout(()=>menu.classList.remove('open'), 120); });
+    menu.addEventListener('focusin', ()=>menu.classList.add('open'));
+    menu.addEventListener('focusout', (e)=>{ if(!menu.contains(e.relatedTarget)) menu.classList.remove('open'); });
+  });
+
+  // Gentle custom scroll for in-page anchors
+  const ease = t => t<.5 ? 2*t*t : -1+(4-2*t)*t;
+  function smoothScrollToEl(el, duration=850){
+    const start = window.pageYOffset;
+    const hdr = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--hdr-h')) + 18;
+    const end = el.getBoundingClientRect().top + window.pageYOffset - hdr;
+    const startTime = performance.now();
+    function loop(now){
+      const t = Math.min(1, (now - startTime) / duration);
+      window.scrollTo(0, start + (end - start) * ease(t));
+      if (t < 1) requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+  }
+  document.addEventListener('click', (e)=>{
+    const a = e.target.closest('a[href^="#"]'); if(!a) return;
+    const id = a.getAttribute('href');
+    const el = document.querySelector(id);
+    if(el){
+      e.preventDefault();
+      smoothScrollToEl(el, 850);
+      history.pushState(null, '', id);
+    }
+  });
+
+  // Footer hours (stub)
+  (function(){
+    const tz='America/New_York';
+    const schedule=[null,null,{open:[13,0],close:[17,0]},{open:[13,0],close:[18,0]},{open:[13,0],close:[18,0]},{open:[13,0],close:[18,0]},null];
+    function parts(d){
+      const p=new Intl.DateTimeFormat('en-US',{timeZone:tz,weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(d);
+      const m={}; for(const x of p) m[x.type]=x.value; const idx=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(m.weekday);
+      return {dayIdx:idx,hour:+m.hour,minute:+m.minute};
+    }
+    function fmt([h,m]){const am=h>=12?'PM':'AM',h12=((h+11)%12)+1,mm=String(m).padStart(2,'0');return `${h12}:${mm} ${am}`;}
+    const now=parts(new Date()); const tgt=document.querySelector('.hours .hours-value'); if(!tgt) return;
+    const s=schedule[now.dayIdx]; if(!s){tgt.textContent='Closed today';return;}
+    const n=now.hour*60+now.minute, o=s.open[0]*60+s.open[1], c=s.close[0]*60+s.close[1];
+    tgt.textContent = n<o ? `Closed · Opens at ${fmt(s.open)}` : (n<c ? `Open now · Closes at ${fmt(s.close)}` : 'Closed today');
+  }());
+})();
+</script>
+</body>
+</html>
