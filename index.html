@@ -119,6 +119,16 @@ nav{display:flex;align-items:center;justify-content:center}
   .step{grid-template-columns:72px 1fr}
   .step .image{grid-column:2 / -1}
 }
+
+  .step .content p {
+  font-size: 18px;        /* default was 16px — now larger */
+  line-height: 1.75;      /* adds breathing room */
+  color: #2c2c2c;         /* slightly deeper for better contrast */
+}
+  .step .content h3 {
+  font-size: 26px;
+  font-weight: 800;
+}
 .node{
   position:relative;
   width:64px;height:64px;border-radius:50%;
@@ -381,8 +391,8 @@ nav{display:flex;align-items:center;justify-content:center}
 <section class="section">
   <div class="container closer">
     <h2 class="title">Become a Winemaker</h2>
-    <p class="lead">Pair your vintage with great food and even better friends. Raise a glass to your creation and enjoy.</p>
-    <p class="lead">Who knows, maybe even catch a classic episode of I Love Lucy or two! Salut!</p>
+    <p class="lead">Pair your vintage with great food and even better friends. Raise a glass to your creation and enjoy. Who knows, maybe even catch a classic episode of I Love Lucy or two! Salut!</p>
+    <br>
     <div class="btn-row" style="margin-top:8px">
       <a class="btn primary" href="https://makewinewithus.com/create-account">Create an Account</a>
        <a class="btn ghost" href="https://makewinewithus.com/contact">Contact Us</a>
